@@ -1,0 +1,24 @@
+{
+  "name": "pstack-pt-br",
+  "displayName": "pstack (pt-BR)",
+  "version": "0.15.43",
+  "description": "se você quer ir rápido, vá fundo primeiro. o pstack ajuda você a escrever menos código, de mais qualidade. fluxos de agente rigorosos que você paraleliza com confiança. Tradução PT-BR do pstack de Lauren Tan.",
+  "author": {
+    "name": "Lauren Tan"
+  },
+  "homepage": "https://github.com/viniciuscsouza/pstack/tree/pt-br/claude-code",
+  "repository": "https://github.com/viniciuscsouza/pstack",
+  "license": "MIT",
+  "logo": "assets/logo.png",
+  "keywords": [
+    "pstack",
+    "poteto-mode",
+    "workflow",
+    "principles",
+    "agent-style",
+    "subagents",
+    "unslop"
+  ],
+  "skills": "./skills/",
+  "agents": ["./agents/poteto-agent.md", "./agents/comment-sicko.md"]
+}

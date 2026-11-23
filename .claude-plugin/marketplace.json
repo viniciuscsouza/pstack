@@ -1,0 +1,19 @@
+{
+  "name": "pstack-pt-br",
+  "owner": {
+    "name": "viniciuscsouza"
+  },
+  "plugins": [
+    {
+      "name": "pstack-pt-br",
+      "source": "./claude-code",
+      "description": "pstack em português do Brasil. Workflows de engenharia rigorosos, 58 skills, 24 princípios, playbooks e subagentes.",
+      "version": "0.15.43",
+      "author": {
+        "name": "Lauren Tan"
+      },
+      "license": "MIT",
+      "keywords": ["pstack", "poteto-mode", "pt-br", "workflow"]
+    }
+  ]
+}
