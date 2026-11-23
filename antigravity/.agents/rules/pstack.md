@@ -1,3 +1,8 @@
+---
+trigger: always_on
+description: "Contexto sempre ativo do pstack em PT-BR: paths das skills, invocação, mapeamento de ferramentas do harness e invariantes do fluxo de trabalho."
+---
+
 # pstack
 
 Este workspace usa o pstack, em português do Brasil. As skills ficam em `.agents/skills/` e carregam sozinhas quando a `description` casa com a tarefa. O agente também pode invocar pelo nome, como `/poteto-mode` ou `/unslop`.
@@ -12,7 +17,7 @@ Este workspace usa o pstack, em português do Brasil. As skills ficam em `.agent
 
 Cada papel herda o modelo da sessão. O frontmatter de skill aqui aceita só `name` e `description`, então modelo se escolhe na sessão, nunca no arquivo da skill.
 
-Se precisar fixar papéis, a tabela vive em `.agents/rules/pstack-models.md`. Cada arquivo de regra tem limite de 12.000 caracteres, então quebre a tabela em dois arquivos se passar disso.
+Se precisar fixar papéis, a tabela vive em `.agents/rules/pstack-models.md`, com `trigger: always_on` no frontmatter. Limite conferido em 2026-11-23 na doc oficial do Antigravity: 24.000 bytes por arquivo de regra, após expandir includes, e orçamento agregado de 20.000 tokens para regras globais e `always_on`. Se a tabela passar do limite por arquivo, quebre em dois arquivos, cada um com frontmatter `trigger: always_on`.
 
 ## Regras que valem sempre
 

@@ -28,13 +28,13 @@ Um prompt de perf declara a medição, não uma impressão:
 /poteto-mode startup takes 1.8s on this fixture. trace it, fix the measured cause, show me before and after.
 ```
 
-Cada um destes roteia para o seu playbook ([Bug fix](../../skills/poteto-mode/playbooks/bug-fix.md), [Feature](../../skills/poteto-mode/playbooks/feature.md), [Refactoring](../../skills/poteto-mode/playbooks/refactoring.md), [Perf issue](../../skills/poteto-mode/playbooks/perf-issue.md)), e o playbook fornece os passos que você não digitou. Reproduzir antes de corrigir, nomear a forma dos dados antes de implementar, prender o comportamento antes de reestruturar, perfilar antes de otimizar.
+Cada um destes roteia para o seu playbook ([Bug fix](../../.github/skills/poteto-mode/playbooks/bug-fix.md), [Feature](../../.github/skills/poteto-mode/playbooks/feature.md), [Refactoring](../../.github/skills/poteto-mode/playbooks/refactoring.md), [Perf issue](../../.github/skills/poteto-mode/playbooks/perf-issue.md)), e o playbook fornece os passos que você não digitou. Reproduzir antes de corrigir, nomear a forma dos dados antes de implementar, prender o comportamento antes de reestruturar, perfilar antes de otimizar.
 
-Para melhoria sustentada de um número, existe o [Hillclimb playbook](../../skills/poteto-mode/playbooks/hillclimb.md). Dê a métrica, um alvo, e um piso de tentativas, e ele roda um laço de uma hipótese por vez com um harness de medição congelado. Ele mantém os ganhos e reverte todo o resto.
+Para melhoria sustentada de um número, existe o [Hillclimb playbook](../../.github/skills/poteto-mode/playbooks/hillclimb.md). Dê a métrica, um alvo, e um piso de tentativas, e ele roda um laço de uma hipótese por vez com um harness de medição congelado. Ele mantém os ganhos e reverte todo o resto.
 
-Os dois playbooks de perf rodam [`/benchmark-checklist`](../../skills/benchmark-checklist/SKILL.md) nos seus números. Perf issue valida a linha de base e cada número depois dela, e Hillclimb valida o harness antes de congelar. [Verifique e entregue](./06-verify-and-ship.md#vet-a-measured-number-with-benchmark-checklist) mostra quando digitar você mesmo.
+Os dois playbooks de perf rodam [`/benchmark-checklist`](../../.github/skills/benchmark-checklist/SKILL.md) nos seus números. Perf issue valida a linha de base e cada número depois dela, e Hillclimb valida o harness antes de congelar. [Verifique e entregue](./06-verify-and-ship.md#vet-a-measured-number-with-benchmark-checklist) mostra quando digitar você mesmo.
 
-Às vezes você quer a causa antes de qualquer correção. Para um sintoma ao vivo, como um vazamento, um giro de CPU ociosa, ou um glitch visual, o [Runtime forensics playbook](../../skills/poteto-mode/playbooks/runtime-forensics.md) instrumenta o processo em execução. Para um profile já capturado, o [Trace forensics playbook](../../skills/poteto-mode/playbooks/trace-forensics.md) lê o artefato e mapeia o frame quente para o código-fonte. Os dois devolvem um diagnóstico, não uma correção:
+Às vezes você quer a causa antes de qualquer correção. Para um sintoma ao vivo, como um vazamento, um giro de CPU ociosa, ou um glitch visual, o [Runtime forensics playbook](../../.github/skills/poteto-mode/playbooks/runtime-forensics.md) instrumenta o processo em execução. Para um profile já capturado, o [Trace forensics playbook](../../.github/skills/poteto-mode/playbooks/trace-forensics.md) lê o artefato e mapeia o frame quente para o código-fonte. Os dois devolvem um diagnóstico, não uma correção:
 
 ```text
 /poteto-mode here's a cpuprofile from the slow startup. tell me where the time goes and which source lines own it. no fix yet.
@@ -48,15 +48,15 @@ Quando um bug tem um caminho de teste local barato, o prompt inteiro pode ser du
 /tdd implement
 ```
 
-Em contexto, isso basta. [`/tdd`](../../skills/tdd/SKILL.md) escreve o menor teste que falha pelo motivo pretendido, depois a correção, depois roda o teste de novo. Se um teste precisaria de montagem ampla de harness ou mocks frágeis, a skill diz isso e usa a checagem executável mais próxima. Não force um teste onde um comando real é evidência mais forte.
+Em contexto, isso basta. [`/tdd`](../../.github/skills/tdd/SKILL.md) escreve o menor teste que falha pelo motivo pretendido, depois a correção, depois roda o teste de novo. Se um teste precisaria de montagem ampla de harness ou mocks frágeis, a skill diz isso e usa a checagem executável mais próxima. Não force um teste onde um comando real é evidência mais forte.
 
 ## Carregue as regras de TypeScript pelo nome
 
-[`typescript-best-practices`](../../skills/typescript-best-practices/SKILL.md) transforma os princípios de sistema de tipos em regras concretas. Uniões discriminadas, `unknown` nas fronteiras, variantes exaustivas, tipos derivados de schema. Ela não carrega sozinha, então digite `/typescript-best-practices` quando uma tarefa toca arquivos `.ts` ou `.tsx`.
+[`typescript-best-practices`](../../.github/skills/typescript-best-practices/SKILL.md) transforma os princípios de sistema de tipos em regras concretas. Uniões discriminadas, `unknown` nas fronteiras, variantes exaustivas, tipos derivados de schema. Ela não carrega sozinha, então digite `/typescript-best-practices` quando uma tarefa toca arquivos `.ts` ou `.tsx`.
 
 ## Limpe antes de commitar
 
-O [Opening a PR playbook](../../skills/poteto-mode/playbooks/opening-a-pr.md) roda `/deslop` no diff antes de cada commit, e o poteto-mode aplica [`/unslop`](../../skills/unslop/SKILL.md) na descrição do PR e nos corpos dos commits. O `/deslop` vem no plugin `cursor-team-kit`, não no pstack. Se você não tem, peça o mesmo resultado em palavras simples. Remova comentários narrando, guardas sem sustentação, caminhos de compatibilidade mortos, e edições sem relação.
+O [Opening a PR playbook](../../.github/skills/poteto-mode/playbooks/opening-a-pr.md) roda `/deslop` no diff antes de cada commit, e o poteto-mode aplica [`/unslop`](../../.github/skills/unslop/SKILL.md) na descrição do PR e nos corpos dos commits. O `/deslop` vem no plugin `cursor-team-kit`, não no pstack. Se você não tem, peça o mesmo resultado em palavras simples. Remova comentários narrando, guardas sem sustentação, caminhos de compatibilidade mortos, e edições sem relação.
 
 Para prosa, `/unslop` recebe um alvo e quaisquer regras extras que você tenha:
 
@@ -74,7 +74,7 @@ Comentários precisam de uma passada própria, e não do agente que os escreveu.
 /no-comments the diff
 ```
 
-[`/no-comments`](../../skills/no-comments/SKILL.md) gera o [Comment Sicko](../../agents/comment-sicko.md), um revisor somente leitura com uma lista curta do que fica. Cabeçalhos de licença, doc comments numa API pública, links que explicam o que o código não consegue, comportamento forçado por uma dependência externa que você não pode remodelar. Todo o resto sai. Uma surpresa no seu próprio código não ganha essa passada. O comentário volta como flag de refatoração, e `/no-comments` corrige as flags que aceita na causa raiz. Quando um comentário alega uma restrição, "do not remove", a skill oferece codificar a alegação como tipo, teste ou lint. De qualquer jeito, o comentário sai.
+[`/no-comments`](../../.github/skills/no-comments/SKILL.md) gera o [Comment Sicko](../../.github/agents/comment-sicko.md), um revisor somente leitura com uma lista curta do que fica. Cabeçalhos de licença, doc comments numa API pública, links que explicam o que o código não consegue, comportamento forçado por uma dependência externa que você não pode remodelar. Todo o resto sai. Uma surpresa no seu próprio código não ganha essa passada. O comentário volta como flag de refatoração, e `/no-comments` corrige as flags que aceita na causa raiz. Quando um comentário alega uma restrição, "do not remove", a skill oferece codificar a alegação como tipo, teste ou lint. De qualquer jeito, o comentário sai.
 
 A divisão de trabalho vale manter clara. `/deslop` limpa o slop do código, `/unslop` limpa o slop da prosa, e `/no-comments` entrega os comentários a um revisor que não os escreveu.
 

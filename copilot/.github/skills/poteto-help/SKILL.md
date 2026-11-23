@@ -38,17 +38,17 @@ Quando a regra de modelo está faltando e isso importa, pergunte se o usuário q
 2. Rode [`/setup-pstack`](../setup-pstack/SKILL.md). Ele pede um orçamento de raciocínio, mapeia um modelo para cada papel, e escreve uma regra. A regra vale para chats novos. Depois ele oferece uma vez cada a geração de uma skill de verificação e de uma skill de verificação formal para o projeto, a menos que o projeto já tenha uma.
 3. Comece uma tarefa de verdade com `/poteto-mode`, um objetivo, e uma checagem que possa passar ou falhar.
 
-Instalar não muda nada até o usuário invocar uma skill. Só o `/setup-pstack` carrega a partir das palavras do usuário. O [README](../../README.md) e a [página 1 do guia](../../docs/guide/01-setup.md) têm os detalhes. Ofereça escrever o primeiro prompt junto com ele, conforme [`references/prompting.md`](references/prompting.md).
+Instalar não muda nada até o usuário invocar uma skill. Só o `/setup-pstack` carrega a partir das palavras do usuário. O [README](../../../README.md) e a [página 1 do guia](../../../docs/guide/01-setup.md) têm os detalhes. Ofereça escrever o primeiro prompt junto com ele, conforme [`references/prompting.md`](references/prompting.md).
 
 Se o custo é a preocupação, diga para onde vão os tokens e como gastar menos. O pstack gasta tokens extras em subagentes e painéis de revisão. Rode `/setup-pstack` de novo e escolha um orçamento menor ou modelos mais baratos. Um papel definido como `auto` ou `inherit-parent` roda no modelo do chat, o que economiza tokens quando o chat roda em Auto ou num modelo mais barato. Uma lista de painel mais curta roda menos subagentes, um para cada entrada. Guarde `/poteto-mode` para trabalho que precisa de rigor.
 
-O pstack é feito para o Cursor, e também instala no Claude Code com `/plugin marketplace add cursor/plugins`, depois `/plugin install pstack@cursor-plugins`. Lá, cada comando leva o prefixo `pstack:`, como `/pstack:poteto-mode`. O [adaptador do Claude Code](../../docs/harness/claude-code.md) mapeia os nomes do Cursor, e um passo que precisa de recurso exclusivo do Cursor, como Bugbot ou Automations, é pulado com uma nota de uma linha.
+O pstack de origem é um plugin do Cursor e também instala no Claude Code com `/plugin marketplace add cursor/plugins`, depois `/plugin install pstack@cursor-plugins`. Nessa instalação do plugin de origem, cada comando leva o prefixo `pstack:`, como `/pstack:poteto-mode`. O [adaptador de GitHub Copilot](../../../docs/harness/copilot.md) mapeia os nomes do Cursor, e um passo que precisa de recurso exclusivo do Cursor, como Bugbot ou Automations, é pulado com uma nota de uma linha. Neste pacote adaptado o namespace é próprio: não use o identificador do plugin de origem aqui.
 
 Outras ferramentas conseguem ler as skills, porque usam o formato Agent Skills. Mas a maioria das skills de fluxo, incluindo `/poteto-mode`, `/how` e `/teach`, cria subagentes do Cursor, alguns com modelos por papel, e Custom Modes e `/loop` são recursos do Cursor, então essas partes podem não funcionar lá.
 
 ## Comece uma tarefa com `/poteto-mode`
 
-O `/poteto-mode` casa a tarefa com um playbook, copia os passos do playbook para a lista de tarefas, e roda as outras skills conforme os passos precisam. Um bom prompt declara o objetivo e como saber que acabou. Ele não lista skills, porque uma sequência escrita à mão tende a perder ou reordenar passos que o playbook manteria. Leia [`references/prompting.md`](references/prompting.md) antes de ajudar a escrever um. A [página 2 do guia](../../docs/guide/02-poteto-mode.md) tem exemplos.
+O `/poteto-mode` casa a tarefa com um playbook, copia os passos do playbook para a lista de tarefas, e roda as outras skills conforme os passos precisam. Um bom prompt declara o objetivo e como saber que acabou. Ele não lista skills, porque uma sequência escrita à mão tende a perder ou reordenar passos que o playbook manteria. Leia [`references/prompting.md`](references/prompting.md) antes de ajudar a escrever um. A [página 2 do guia](../../../docs/guide/02-poteto-mode.md) tem exemplos.
 
 Se o `/poteto-mode` fica ligado depende de como o usuário inicia ele.
 
@@ -126,11 +126,11 @@ Playbooks são listas de passos dentro do `/poteto-mode`, não skills, então n�
 - "full autopilot on this queue" roda Autopilot-full. "autopilot, don't merge" roda Autopilot-stack.
 - "run the eval playbook" roda Eval.
 
-Sem `/poteto-mode`, uma frase como "babysit this pr" pode iniciar a skill do próprio Cursor para o mesmo trabalho. A seção Playbooks de [`poteto-mode`](../poteto-mode/SKILL.md) lista todos os playbooks. A [página 6 do guia](../../docs/guide/06-verify-and-ship.md) cobre abrir, babysit e aterrissar um PR.
+Sem `/poteto-mode`, uma frase como "babysit this pr" pode iniciar a skill do próprio Cursor para o mesmo trabalho. A seção Playbooks de [`poteto-mode`](../poteto-mode/SKILL.md) lista todos os playbooks. A [página 6 do guia](../../../docs/guide/06-verify-and-ship.md) cobre abrir, babysit e aterrissar um PR.
 
 O pstack não tem skill de planejamento. O Plan Mode do Cursor trabalha junto. Para trabalho que atravessa fases ou PRs empilhados, pedir um plano ao `/poteto-mode` roda o [playbook Multi-phase plan](../poteto-mode/playbooks/multi-phase-plan.md), que escreve o plano e não implementa. Para uma questão de design, o playbook Prototype ou o `/architect` resolve no código primeiro.
 
-Princípios são skills de uma regra que o `/poteto-mode` lê e cita nas respostas. O usuário raramente invoca um. Ele direciona pelos nomes, como em "apply prove it works. show me the real output." Digitar `/principle-<name>` ainda carrega um sob demanda. A [página 8 do guia](../../docs/guide/08-principles.md) lista eles.
+Princípios são skills de uma regra que o `/poteto-mode` lê e cita nas respostas. O usuário raramente invoca um. Ele direciona pelos nomes, como em "apply prove it works. show me the real output." Digitar `/principle-<name>` ainda carrega um sob demanda. A [página 8 do guia](../../../docs/guide/08-principles.md) lista eles.
 
 ## Corrija uma execução que deu errado
 
@@ -142,10 +142,10 @@ Princípios são skills de uma regra que o `/poteto-mode` lê e cita nas respost
 | As execuções custaram mais que o esperado | Veja o parágrafo de custo em Configure. |
 | Uma skill não carregou sozinha | Só o `/setup-pstack` carrega a partir das palavras do usuário. As outras carregam quando o usuário digita elas ou quando o `/poteto-mode` roda elas, e ele não roda toda skill. |
 | Agentes paralelos sobrescreveram um ao outro | Dê a cada agente o próprio worktree, ou rode eles como agentes de nuvem, que cada um ganha a própria máquina. |
-| Uma execução da noite avançou mas não terminou nada | O `/loop` precisa de uma checagem que possa passar ou falhar, não de uma duração. Veja a [página 7 do guia](../../docs/guide/07-overnight.md). |
+| Uma execução da noite avançou mas não terminou nada | O `/loop` precisa de uma checagem que possa passar ou falhar, não de uma duração. Veja a [página 7 do guia](../../../docs/guide/07-overnight.md). |
 | A resposta afirma sucesso por causa de um build verde | Peça o comando, fluxo, valor armazenado ou profile real. Esse é o princípio prove-it-works. |
 
-Para uma execução que desvia, [`references/prompting.md`](references/prompting.md) tem direcionamentos de uma linha. A [página 10 do guia](../../docs/guide/10-recipes-and-pitfalls.md) tem mais armadilhas e as receitas que valem copiar.
+Para uma execução que desvia, [`references/prompting.md`](references/prompting.md) tem direcionamentos de uma linha. A [página 10 do guia](../../../docs/guide/10-recipes-and-pitfalls.md) tem mais armadilhas e as receitas que valem copiar.
 
 ## Deixe o pstack com a minha cara
 
@@ -154,7 +154,7 @@ Para uma execução que desvia, [`references/prompting.md`](references/prompting
 - `/poteto-mode write a skill for <workflow>` roda o playbook de autoria. O playbook de eval testa uma mudança de skill às cegas.
 - Corrija uma skill com defeito no PR dela, não dentro do trabalho de funcionalidade onde ela errou.
 
-A [página 9 do guia](../../docs/guide/09-make-it-yours.md) cobre cada um destes.
+A [página 9 do guia](../../../docs/guide/09-make-it-yours.md) cobre cada um destes.
 
 ## Resposta
 

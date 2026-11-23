@@ -12,7 +12,7 @@ Num chat do Cursor, rode:
 
 O Cursor confirma que o plugin está instalado.
 
-No Claude Code, rode `/plugin marketplace add cursor/plugins`, depois `/plugin install pstack@cursor-plugins`. O Claude Code prefixa comandos de plugin, então cada comando deste guia leva o prefixo `pstack:` lá, como `/pstack:setup-pstack`, que escreve a regra de modelo em `~/.claude/rules/pstack-models.md`. O [adaptador do Claude Code](../harness/claude-code.md) cobre as demais diferenças.
+No Claude Code, instale este pacote com `/plugin marketplace add viniciuscsouza/pstack`, depois `/plugin install pstack-pt-br@pstack-pt-br`. O Claude Code prefixa comandos e agentes de plugin, então cada comando deste guia leva o prefixo `pstack-pt-br:` lá, como `/pstack-pt-br:setup-pstack`, que escreve a regra de modelo em `~/.claude/rules/pstack-models.md`. O [adaptador do Claude Code](../harness/claude-code.md) cobre as demais diferenças. O identificador `pstack@cursor-plugins` é do plugin de origem, do Cursor, e não se aplica a este pacote.
 
 ## Escolha seus modelos
 
@@ -22,7 +22,7 @@ Rode:
 /setup-pstack
 ```
 
-O [`/setup-pstack`](../../skills/setup-pstack/SKILL.md) detecta os modelos aos quais você tem acesso, pede um orçamento de raciocínio, mostra cada papel (delegados de código, julgamento, os painéis de revisão) e pergunta o que você quer. Responda as perguntas. Ele escreve `~/.cursor/rules/pstack-models.mdc`, uma regra pequena que toda skill do pstack lê.
+O [`/setup-pstack`](../../skills/setup-pstack/SKILL.md) detecta os modelos aos quais você tem acesso, pede um orçamento de raciocínio, mostra cada papel (delegados de código, julgamento, os painéis de revisão) e pergunta o que você quer. Responda as perguntas. Ele escreve `~/.claude/rules/pstack-models.md`, uma regra pequena que toda skill do pstack lê.
 
 Os padrões são os mesmos do orçamento `large`. Código, prosa e julgamento rodam no Opus 5.5 com raciocínio `xhigh`, e os painéis de revisão e os workers de swarm rodam em `high`. Nenhum papel roda acima de `xhigh`. Fora de um painel de revisão, o Fable 5.2 roda só quando você o nomeia para uma tarefa ou após duas execuções Opus 5.5 do mesmo briefing falharem na checagem. `medium` abaixa cada papel um nível e `small` abaixa dois, e os dois gastam menos tokens.
 

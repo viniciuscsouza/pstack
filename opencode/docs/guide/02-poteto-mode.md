@@ -25,7 +25,7 @@ flowchart TD
     J --> K
 ```
 
-O diagrama mostra as rotas comuns. Existem também playbooks para hillclimb de uma métrica, diagnóstico de sintomas de runtime e traces capturados, protótipos, paridade visual, autoria e avaliação de skills, execuções autônomas, abertura de PR, babysit de um PR ou pilha até o ponto de merge, entrega de uma pilha verificada, rodar uma fila de PRs ou uma pilha no piloto automático, retomada de sessão, pausa segura, planos multifase, e limpeza de worktrees. O [diretório de playbooks](../../skills/poteto-mode/playbooks/) tem o conjunto completo.
+O diagrama mostra as rotas comuns. Existem também playbooks para hillclimb de uma métrica, diagnóstico de sintomas de runtime e traces capturados, protótipos, paridade visual, autoria e avaliação de skills, execuções autônomas, abertura de PR, babysit de um PR ou pilha até o ponto de merge, entrega de uma pilha verificada, rodar uma fila de PRs ou uma pilha no piloto automático, retomada de sessão, pausa segura, planos multifase, e limpeza de worktrees. O [diretório de playbooks](../../.opencode/skills/poteto-mode/playbooks) tem o conjunto completo.
 
 ## Diga o objetivo, não a cerimônia
 
@@ -64,9 +64,9 @@ Para um relato barulhento, como uma thread longa ou um bug vago, faça da reform
 /poteto-mode read this thread. restate the underlying issue in your own words, in plain english. don't change any code yet.
 ```
 
-Uma leitura errada aparece na reformulação, antes de existir qualquer código. Corrija ali, e custa uma mensagem em vez de uma correção errada. Para só a reformulação, sem playbook, rode [`/in-your-own-words`](../../skills/in-your-own-words/SKILL.md). Ele reformula o que o agente acha que são seus objetivos e que problema você tenta resolver.
+Uma leitura errada aparece na reformulação, antes de existir qualquer código. Corrija ali, e custa uma mensagem em vez de uma correção errada. Para só a reformulação, sem playbook, rode [`/in-your-own-words`](../../.opencode/skills/in-your-own-words/SKILL.md). Ele reformula o que o agente acha que são seus objetivos e que problema você tenta resolver.
 
-Quando você não tem certeza se um prompt está apontado certo, rode [`/sharpen`](../../skills/sharpen/SKILL.md) nele antes de enviar:
+Quando você não tem certeza se um prompt está apontado certo, rode [`/sharpen`](../../.opencode/skills/sharpen/SKILL.md) nele antes de enviar:
 
 ```text
 /sharpen write a migration guide for the v2 config format.
@@ -112,7 +112,7 @@ Quando o trabalho tem que ficar local, peça um worktree desde o início:
 /poteto-mode new task. branch off <base> in a fresh worktree, then port the parser change there.
 ```
 
-Cada tarefa em seu próprio branch e worktree significa que nenhum agente pisa nos arquivos do outro. Worktrees custam disco e recursos da máquina, então um laptop roda só um punhado por vez. O [Opening a PR playbook](../../skills/poteto-mode/playbooks/opening-a-pr.md) já trabalha a partir de um worktree para mudanças de código, então na maioria das vezes você só diz isso quando uma base ou local específico importa.
+Cada tarefa em seu próprio branch e worktree significa que nenhum agente pisa nos arquivos do outro. Worktrees custam disco e recursos da máquina, então um laptop roda só um punhado por vez. O [Opening a PR playbook](../../.opencode/skills/poteto-mode/playbooks/opening-a-pr.md) já trabalha a partir de um worktree para mudanças de código, então na maioria das vezes você só diz isso quando uma base ou local específico importa.
 
 Worktrees se acumulam. Quando o disco apertar, peça:
 
@@ -120,7 +120,7 @@ Worktrees se acumulam. Quando o disco apertar, peça:
 /poteto-mode what's eating my disk? prune the worktrees that are safe to prune.
 ```
 
-O [Worktree cleanup playbook](../../skills/poteto-mode/playbooks/worktree-cleanup.md) classifica cada worktree por estado de merge, trabalho não commitado, e quais chats ainda tocam nele. Ele apaga só o que essa evidência libera e pausa para você decidir sobre qualquer coisa com trabalho não commitado.
+O [Worktree cleanup playbook](../../.opencode/skills/poteto-mode/playbooks/worktree-cleanup.md) classifica cada worktree por estado de merge, trabalho não commitado, e quais chats ainda tocam nele. Ele apaga só o que essa evidência libera e pausa para você decidir sobre qualquer coisa com trabalho não commitado.
 
 ## Deixe rodando
 
@@ -130,10 +130,10 @@ Quando você se afastar, diga o que significa pronto e vá:
 /poteto-mode im stepping away. keep going until the migration check reports zero old callers. log your decisions.
 ```
 
-Trabalho que você vai revisar depois passa por [`/figure-it-out`](../../skills/figure-it-out/SKILL.md), que desenha as fases da execução e mantém um log de decisões do [`/show-me-your-work`](../../skills/show-me-your-work/SKILL.md). [Rode trabalho enquanto dorme](./07-overnight.md) cobre o contrato noturno completo.
+Trabalho que você vai revisar depois passa por [`/figure-it-out`](../../.opencode/skills/figure-it-out/SKILL.md), que desenha as fases da execução e mantém um log de decisões do [`/show-me-your-work`](../../.opencode/skills/show-me-your-work/SKILL.md). [Rode trabalho enquanto dorme](./07-overnight.md) cobre o contrato noturno completo.
 
 **Armadilha:** não enumere skills no seu prompt ("use /architect, then /arena, then /interrogate..."). O playbook já sequencia elas, e uma sequência escrita na mão costuma reordenar ou derrubar passos que o playbook manteria. Nomeie uma skill só quando você quer sobrepor uma escolha específica.
 
-Leia [`poteto-mode`](../../skills/poteto-mode/SKILL.md) em si para as regras completas de roteamento.
+Leia [`poteto-mode`](../../.opencode/skills/poteto-mode/SKILL.md) em si para as regras completas de roteamento.
 
 Próximo: [Entenda o código](./03-understand.md).

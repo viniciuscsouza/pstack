@@ -47,7 +47,7 @@ Padrão deste port: **herdar o modelo da sessão**. O campo `model` do agente é
 
 | Cursor | GitHub Copilot |
 | --- | --- |
-| `claude-<família>-<versão>-<esforço>[-fast]` | `model` do agente, com o identificador que o ambiente aceita, mais `reasoningEffort` quando ele oferecer. Confira no seletor de modelo da sessão antes de escrever. |
+| `claude-<família>-<versão>-<esforço>[-fast]` | `model` do agente, com o identificador que o ambiente aceita. `reasoningEffort` não é campo de arquivo de agente: é opção do SDK do Copilot, usada no código que chama a API. Confira no seletor de modelo da sessão antes de escrever `model`. |
 | Slug `gemini-*` ou de outro fornecedor | Omita `model` e deixe o ambiente resolver. |
 | `auto` ou `inherit-parent` | Omita `model`. |
 | A regra `pstack-models.mdc` | `.github/copilot-instructions.md`, que é carregado sempre. As linhas de papel ficam lá. |

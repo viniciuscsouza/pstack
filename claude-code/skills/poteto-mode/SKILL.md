@@ -2,8 +2,6 @@
 name: poteto-mode
 description: estilo de agente do poteto para respostas concisas e detalhadas, subagentes deliberados, prosa sem slop, código simples e trabalho verificado. Use para poteto, /poteto-mode, ou pedidos para trabalhar neste estilo.
 disable-model-invocation: true
-icon: crown
-color: yellow
 ---
 
 # Modo poteto

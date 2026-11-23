@@ -17,7 +17,7 @@ O que você vai aprender:
 
 Leia as páginas em ordem na primeira vez. Depois disso, cada página fica sozinha.
 
-Quando você travar, ou não souber qual skill se encaixa, digite [`/poteto-help`](../../skills/poteto-help/SKILL.md) com a sua pergunta:
+Quando você travar, ou não souber qual skill se encaixa, digite [`/poteto-help`](../../.opencode/skills/poteto-help/SKILL.md) com a sua pergunta:
 
 ```text
 /poteto-help which skill should i use to review this branch?

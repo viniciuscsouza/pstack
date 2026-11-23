@@ -148,7 +148,7 @@ Raramente você precisa de mais palavras. Precisa do nome certo, e a [página de
 /bro
 ```
 
-Esse é o prompt inteiro. O [`/bro`](../../skills/bro/SKILL.md) reformula a última mensagem como um humano falando com outro, sem jargão, mais curto. Use quando uma resposta é tecnicamente completa e você ainda não sabe o que ela disse.
+Esse é o prompt inteiro. O [`/bro`](../../.github/skills/bro/SKILL.md) reformula a última mensagem como um humano falando com outro, sem jargão, mais curto. Use quando uma resposta é tecnicamente completa e você ainda não sabe o que ela disse.
 
 ## Recupere o atraso de um chat que você deixou rodando
 
@@ -156,9 +156,9 @@ Esse é o prompt inteiro. O [`/bro`](../../skills/bro/SKILL.md) reformula a últ
 /ketchup
 ```
 
-O [`/ketchup`](../../skills/ketchup/SKILL.md) diz em palavras simples o que mudou desde a sua última mensagem, depois lista cada chamada esperando você com a escolha dele, a evidência e o risco. Ele não muda nada enquanto relata.
+O [`/ketchup`](../../.github/skills/ketchup/SKILL.md) diz em palavras simples o que mudou desde a sua última mensagem, depois lista cada chamada esperando você com a escolha dele, a evidência e o risco. Ele não muda nada enquanto relata.
 
-Para assistir ao resumo em vez disso, rode o [`/ketchup-video`](../../skills/ketchup-video/SKILL.md). Ele mostra o que aconteceu num vídeo curto de slides com legendas, e lista as chamadas esperando você em texto embaixo.
+Para assistir ao resumo em vez disso, rode o [`/ketchup-video`](../../.github/skills/ketchup-video/SKILL.md). Ele mostra o que aconteceu num vídeo curto de slides com legendas, e lista as chamadas esperando você em texto embaixo.
 
 ## As armadilhas
 
@@ -175,7 +175,7 @@ Para assistir ao resumo em vez disso, rode o [`/ketchup-video`](../../skills/ket
 - **Aceitar todo comentário de revisão.** Bots e humanos colocam achados reais e ruído na mesma lista. O `/interrogate` mantém só os achados que uma nova execução prova e lista o que descartou e por quê, e você pode sobrescrever de qualquer lado.
 - **Tratar `auto` como slug de modelo.** `auto` e `inherit-parent` significam "omita o campo model para o subagente herdar o modelo do chat pai". [Configuração](./01-setup.md) cobre os papéis.
 - **Relatar sucesso com base num build verde.** Um build prova que compila. Peça o comando real, o fluxo, o valor gravado ou o profile, e espere a evidência na resposta.
-- **Escrever um `SKILL.md` à mão livre.** Roteie pelo [playbook Authoring or modifying a skill](../../skills/poteto-mode/playbooks/authoring-a-skill.md) para a validação e a revisão acontecerem.
+- **Escrever um `SKILL.md` à mão livre.** Roteie pelo [playbook Authoring or modifying a skill](../../.github/skills/poteto-mode/playbooks/authoring-a-skill.md) para a validação e a revisão acontecerem.
 
 Esse é o guia. Se você pulou adiante, volte para a [configuração](./01-setup.md) e rode uma tarefa real. Os hábitos pegam pelo uso, não pela leitura.
 

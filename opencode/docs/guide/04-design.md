@@ -12,7 +12,7 @@ Os dois erros de design mais comuns são aceitar o primeiro design do agente e p
 /architect design the import pipeline before writing any code. i care most about how callers use it.
 ```
 
-[`/architect`](../../skills/architect/SKILL.md) rastreia primeiro todo sistema que a mudança toca. Depois esboça duas formas diferentes, cada uma com tipos, assinaturas e fronteiras de módulo, e escolhe a em que cada pedaço de estado tem um dono, cada tarefa tem um jeito de ser feita, e os chamadores precisam saber o mínimo. Para um design grande ou contestado, ele roda `/arena` em vez de esboçar sozinho. Se você quer ver o design antes de qualquer código, diga no prompt.
+[`/architect`](../../.opencode/skills/architect/SKILL.md) rastreia primeiro todo sistema que a mudança toca. Depois esboça duas formas diferentes, cada uma com tipos, assinaturas e fronteiras de módulo, e escolhe a em que cada pedaço de estado tem um dono, cada tarefa tem um jeito de ser feita, e os chamadores precisam saber o mínimo. Para um design grande ou contestado, ele roda `/arena` em vez de esboçar sozinho. Se você quer ver o design antes de qualquer código, diga no prompt.
 
 O design não é sagrado depois que o código começa. Se o mesmo contorno volta sempre, `/architect` redesenha em vez de remendar em volta.
 
@@ -22,7 +22,7 @@ O design não é sagrado depois que o código começa. Se o mesmo contorno volta
 /arena take my prompt to the arena verbatim. i want to compare their proposals with yours.
 ```
 
-[`/arena`](../../skills/arena/SKILL.md) é a ferramenta geral por baixo. N subagentes tentam o mesmo briefing de design ou código em paralelo, cada um escrevendo no seu próprio worktree ou diretório. Um juiz somente leitura de um fornecedor de modelo diferente pontua cada candidato contra uma rubrica. Quando nenhum modelo de outro fornecedor pode rodar, o coordenador pula o juiz e escolhe a base ele mesmo. O coordenador lê cada candidato de ponta a ponta, escolhe uma base, enxerta as melhores ideias dos perdedores, e verifica o resultado.
+[`/arena`](../../.opencode/skills/arena/SKILL.md) é a ferramenta geral por baixo. N subagentes tentam o mesmo briefing de design ou código em paralelo, cada um escrevendo no seu próprio worktree ou diretório. Um juiz somente leitura de um fornecedor de modelo diferente pontua cada candidato contra uma rubrica. Quando nenhum modelo de outro fornecedor pode rodar, o coordenador pula o juiz e escolhe a base ele mesmo. O coordenador lê cada candidato de ponta a ponta, escolhe uma base, enxerta as melhores ideias dos perdedores, e verifica o resultado.
 
 ```mermaid
 flowchart LR
@@ -38,7 +38,7 @@ flowchart LR
     H --> I[Verify]
 ```
 
-O painel vem da sua configuração do [`/setup-pstack`](../../skills/setup-pstack/SKILL.md), e você pode ajustar por tarefa. Peça mais candidatos quando a decisão importa, menos quando não:
+O painel vem da sua configuração do [`/setup-pstack`](../../.opencode/skills/setup-pstack/SKILL.md), e você pode ajustar por tarefa. Peça mais candidatos quando a decisão importa, menos quando não:
 
 ```text
 /arena this, 5 candidates. the cache key format is expensive to change later.
@@ -50,7 +50,7 @@ O painel vem da sua configuração do [`/setup-pstack`](../../skills/setup-pstac
 /swarm check every package under packages/ against its check.sh. one worker per package. one report.
 ```
 
-[`/swarm`](../../skills/swarm/SKILL.md) abre N workers por fatias independentes, matrizes de cobertura, raias de gauntlet, partições de exploração, ou braços de corrida declarados. Cada worker ganha seu próprio escopo e checagem, depois reporta `PASS`, `ISSUES` ou `BLOCKED`. O pai espera os workers e devolve um relatório compacto com quaisquer lacunas ou desistências.
+[`/swarm`](../../.opencode/skills/swarm/SKILL.md) abre N workers por fatias independentes, matrizes de cobertura, raias de gauntlet, partições de exploração, ou braços de corrida declarados. Cada worker ganha seu próprio escopo e checagem, depois reporta `PASS`, `ISSUES` ou `BLOCKED`. O pai espera os workers e devolve um relatório compacto com quaisquer lacunas ou desistências.
 
 Use quando o paralelismo compra cobertura ou deixa checagens independentes correrem. `/arena` dá a todo worker o mesmo briefing de design ou código, depois escolhe uma base e enxerta as melhores partes. `/swarm` cobre fatias ou roda uma corrida com uma regra de seleção declarada de antemão. Ele não usa a cerimônia de escolha de base e enxerto.
 
@@ -60,7 +60,7 @@ Use quando o paralelismo compra cobertura ou deixa checagens independentes corre
 /interrogate the whole branch, but skeptically. no nitpicks unless it's an actual bug or regression.
 ```
 
-[`/interrogate`](../../skills/interrogate/SKILL.md) entrega a mudança e a intenção dela a adversários nos modelos configurados, e cada um tenta quebrar com uma execução contra o código real. Adversários encontram falhas diferentes. Um achado só sobrevive quando rodar o comando dele de novo mostra uma falha que quebra a intenção. O relatório lista cada achado verificado com os adversários que o encontraram, depois o que cada adversário descartou e por quê, e não aplica nada.
+[`/interrogate`](../../.opencode/skills/interrogate/SKILL.md) entrega a mudança e a intenção dela a adversários nos modelos configurados, e cada um tenta quebrar com uma execução contra o código real. Adversários encontram falhas diferentes. Um achado só sobrevive quando rodar o comando dele de novo mostra uma falha que quebra a intenção. O relatório lista cada achado verificado com os adversários que o encontraram, depois o que cada adversário descartou e por quê, e não aplica nada.
 
 Leia a lista Dropped também. Você pode sobrepor o veredito.
 
@@ -72,7 +72,7 @@ Nunca aceite o primeiro design. Peça alguns, e escolha a partir de evidência q
 /poteto-mode prototype a few options for the new dropdown menu. take screenshots or videos for me to compare.
 ```
 
-O [Prototype playbook](../../skills/poteto-mode/playbooks/prototype.md) constrói esboços descartáveis num diretório de rascunho, põe as variantes atrás de um seletor, dirige cada uma, e captura telas ou tempos. Ele funciona para comportamento e algoritmos também, não só UI. Protótipos são planejamento com código. Eles deixam o agente responder as próprias perguntas abertas rodando algo em vez de perguntar a você, e abrem espaço para uma opção que você não teria pensado.
+O [Prototype playbook](../../.opencode/skills/poteto-mode/playbooks/prototype.md) constrói esboços descartáveis num diretório de rascunho, põe as variantes atrás de um seletor, dirige cada uma, e captura telas ou tempos. Ele funciona para comportamento e algoritmos também, não só UI. Protótipos são planejamento com código. Eles deixam o agente responder as próprias perguntas abertas rodando algo em vez de perguntar a você, e abrem espaço para uma opção que você não teria pensado.
 
 A mesma ideia escala para um design real. Combine `/architect` com protótipos e mantenha um portão de revisão:
 
@@ -90,7 +90,7 @@ Para um pacote ou API que outro código vai usar, comece pelo documento que um u
 /poteto-mode write a tutorial for how i would use the new config package first. then /teach me why it beats the current one.
 ```
 
-Escrever o tutorial primeiro força a visão do chamador. Você descreve a API para um usuário hipotético e volta para a implementação. O documento também vira um alvo concreto contra o qual o agente checa o próprio trabalho. Nomeie [`/technical-writing`](../../skills/technical-writing/SKILL.md) quando o documento em si importa, para um tutorial continuar tutorial em vez de derivar para referência e explicação ao mesmo tempo.
+Escrever o tutorial primeiro força a visão do chamador. Você descreve a API para um usuário hipotético e volta para a implementação. O documento também vira um alvo concreto contra o qual o agente checa o próprio trabalho. Nomeie [`/technical-writing`](../../.opencode/skills/technical-writing/SKILL.md) quando o documento em si importa, para um tutorial continuar tutorial em vez de derivar para referência e explicação ao mesmo tempo.
 
 ## Planeje depois que o design assentar
 
@@ -100,7 +100,7 @@ O pstack não tem skill de planejamento, de propósito. Quando você quer um pla
 /poteto-mode turn this design into a plan. small verifiable PRs, each with its own verification steps.
 ```
 
-O [Multi-phase plan playbook](../../skills/poteto-mode/playbooks/multi-phase-plan.md) resolve qualquer pergunta aberta restante por protótipo, depois escreve uma seção por PR, cada uma terminando em prova de que a mudança funciona. Uma suíte de testes passando sozinha não conta como essa prova. O plano é a entrega. O playbook não implementa ele, e a execução começa só quando você manda.
+O [Multi-phase plan playbook](../../.opencode/skills/poteto-mode/playbooks/multi-phase-plan.md) resolve qualquer pergunta aberta restante por protótipo, depois escreve uma seção por PR, cada uma terminando em prova de que a mudança funciona. Uma suíte de testes passando sozinha não conta como essa prova. O plano é a entrega. O playbook não implementa ele, e a execução começa só quando você manda.
 
 Para uma migração, declare a régua no prompt:
 

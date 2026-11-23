@@ -46,15 +46,15 @@ Padrão deste port: **herdar o modelo da sessão**. O frontmatter de skill aqui 
 | `claude-<família>-<versão>-<esforço>[-fast]` | Escolha no seletor da sessão. Não escreva slug no arquivo. |
 | Slug `gemini-*` | `gemini-*` no seletor, quando disponível. |
 | `auto` ou `inherit-parent` | Omita qualquer escolha. |
-| A regra `pstack-models.mdc` | `.agents/rules/pstack-models.md`, como regra do workspace. |
+| A regra `pstack-models.mdc` | `.agents/rules/pstack-models.md`, como regra do workspace, com `trigger: always_on` no frontmatter. |
 
 ## setup-pstack
 
-Cada arquivo de regra tem limite de 12.000 caracteres. Se a tabela de papéis passar disso, quebre em dois arquivos, um com os papéis de código e outro com prosa e julgamento.
+Limite conferido em 2026-11-23 na doc oficial do Antigravity: 24.000 bytes por arquivo de regra, após expandir includes, e orçamento agregado de 20.000 tokens para regras globais e `always_on`. Se a tabela de papéis passar do limite por arquivo, quebre em dois arquivos, um com os papéis de código e outro com prosa e julgamento.
 
 - Detectar. Liste os modelos do seletor. Não copie slug do Cursor.
 - Padrões. Sem escolha do usuário, cada papel herda a sessão.
-- Escrever. Grave `.agents/rules/pstack-models.md` sem frontmatter. Regra de workspace é carregada sempre. Não repita as linhas em `AGENTS.md`, porque as duas cópias vão divergir.
+- Escrever. Grave `.agents/rules/pstack-models.md` com frontmatter `trigger: always_on` e `description: "...". Todo `.md` em `rules/` sem `trigger` válido é descartado silenciosamente pelo Antigravity. Não repita as linhas em `AGENTS.md`, porque as duas cópias vão divergir.
 
 ## Paths
 

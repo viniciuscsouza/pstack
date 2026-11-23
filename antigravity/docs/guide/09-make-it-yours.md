@@ -10,7 +10,7 @@ Comece menor do que você pensa. Você não precisa de muitas skills no primeiro
 /automate-me
 ```
 
-Você não descreve o seu estilo, porque o [`/automate-me`](../../skills/automate-me/SKILL.md) lê ele do seu histórico. Ele minera seus transcripts recentes no workspace ativo em busca de preferências repetidas, em como você gosta de respostas, delegação, verificação, código, prosa e processo, depois pergunta quais padrões são de fato você. Ele rascunha `.cursor/skills/<seu-nome>-mode/SKILL.md` pelo fluxo `create-skill` nativo do Cursor, passa o rascunho pelo [`/unslop`](../../skills/unslop/SKILL.md), e abre um PR a partir de um worktree para você revisar como qualquer outra mudança.
+Você não descreve o seu estilo, porque o [`/automate-me`](../../.agents/skills/automate-me/SKILL.md) lê ele do seu histórico. Ele minera seus transcripts recentes no workspace ativo em busca de preferências repetidas, em como você gosta de respostas, delegação, verificação, código, prosa e processo, depois pergunta quais padrões são de fato você. Ele rascunha `.cursor/skills/<seu-nome>-mode/SKILL.md` pelo fluxo `create-skill` nativo do Cursor, passa o rascunho pelo [`/unslop`](../../.agents/skills/unslop/SKILL.md), e abre um PR a partir de um worktree para você revisar como qualquer outra mudança.
 
 Rode de novo sempre que seus hábitos mudarem.
 
@@ -28,7 +28,7 @@ Logo depois de uma tarefa que te ensinou algo, rode
 /reflect that took way too long. capture what we learned so the next run doesn't repeat it.
 ```
 
-[`/reflect`](../../skills/reflect/SKILL.md) lê o transcript, mantém só lições que mudariam o trabalho de um agente futuro, e separa as propostas em `Accepted`, `Rejected` e `Backlog`. Ele espera a sua aprovação antes de qualquer mudança em skill. Aprove uma proposta só se ela mudaria uma decisão futura. Uma sessão estranha é anedota, não regra.
+[`/reflect`](../../.agents/skills/reflect/SKILL.md) lê o transcript, mantém só lições que mudariam o trabalho de um agente futuro, e separa as propostas em `Accepted`, `Rejected` e `Backlog`. Ele espera a sua aprovação antes de qualquer mudança em skill. Aprove uma proposta só se ela mudaria uma decisão futura. Uma sessão estranha é anedota, não regra.
 
 ## Conserte o ambiente com `/correct`
 
@@ -39,7 +39,7 @@ Quando você corrige agentes pelo mesmo erro de novo e de novo, a correção per
 3. Pegue com um teste.
 4. Escreva como doc ou regra de agente. Nada falha quando um agente pula uma regra, então isso vem por último.
 
-Revisão humana não está na lista. Um revisor que precisa pegar o mesmo erro em todo PR é o problema que isso resolve. O [`/correct`](../../skills/correct/SKILL.md) faz o trabalho.
+Revisão humana não está na lista. Um revisor que precisa pegar o mesmo erro em todo PR é o problema que isso resolve. O [`/correct`](../../.agents/skills/correct/SKILL.md) faz o trabalho.
 
 ```text
 /correct agents keep calling the database client directly instead of going through the repository layer
@@ -57,9 +57,9 @@ Quando você já sabe o fluxo que quer capturar.
 /poteto-mode write a skill for verifying database migrations in this repo
 ```
 
-Escrever uma skill casa com o [playbook Authoring or modifying a skill](../../skills/poteto-mode/playbooks/authoring-a-skill.md), que passa pelo `create-skill` nativo do Cursor, valida o frontmatter e os links, e entrega o resultado pelo playbook Opening a PR. Prosa voltada a agente tem uma régua mais alta que prosa humana, porque uma frase inútil vira uma instrução que algum agente futuro segue. Deixe o playbook segurar essa régua em vez de escrever um `SKILL.md` à mão livre.
+Escrever uma skill casa com o [playbook Authoring or modifying a skill](../../.agents/skills/poteto-mode/playbooks/authoring-a-skill.md), que passa pelo `create-skill` nativo do Cursor, valida o frontmatter e os links, e entrega o resultado pelo playbook Opening a PR. Prosa voltada a agente tem uma régua mais alta que prosa humana, porque uma frase inútil vira uma instrução que algum agente futuro segue. Deixe o playbook segurar essa régua em vez de escrever um `SKILL.md` à mão livre.
 
-Dois casos especiais têm geradores próprios. Uma skill que precisa dirigir o seu app e provar comportamento é uma skill de verificação, então use [`/create-verification-skill`](../../skills/create-verification-skill/SKILL.md) e [`/maintain-verification-skill`](../../skills/maintain-verification-skill/SKILL.md) em vez disso. Uma skill que checa uma propriedade do seu código com um model checker, uma prova, ou outro verificador é uma skill de verificação formal, então use [`/create-formal-verification-skill`](../../skills/create-formal-verification-skill/SKILL.md) e [`/maintain-formal-verification-skill`](../../skills/maintain-formal-verification-skill/SKILL.md). [Verifique e entregue](./06-verify-and-ship.md#prove-a-property-with-a-formal-verification-skill) cobre os dois tipos.
+Dois casos especiais têm geradores próprios. Uma skill que precisa dirigir o seu app e provar comportamento é uma skill de verificação, então use [`/create-verification-skill`](../../.agents/skills/create-verification-skill/SKILL.md) e [`/maintain-verification-skill`](../../.agents/skills/maintain-verification-skill/SKILL.md) em vez disso. Uma skill que checa uma propriedade do seu código com um model checker, uma prova, ou outro verificador é uma skill de verificação formal, então use [`/create-formal-verification-skill`](../../.agents/skills/create-formal-verification-skill/SKILL.md) e [`/maintain-formal-verification-skill`](../../.agents/skills/maintain-formal-verification-skill/SKILL.md). [Verifique e entregue](./06-verify-and-ship.md#prove-a-property-with-a-formal-verification-skill) cobre os dois tipos.
 
 ## Escreva docs com um padrão usando `/technical-writing`
 
@@ -69,7 +69,7 @@ Skills não são a única prosa que você entrega. Para docs, RFCs, readmes, des
 /technical-writing review the readme changes
 ```
 
-[`/technical-writing`](../../skills/technical-writing/SKILL.md) aplica um padrão em camadas. O objetivo é prosa que um engenheiro cansado entende na primeira leitura. Ele escolhe primeiro o modo do documento (tutorial, how-to, referência ou explicação), depois trabalha frase por frase. Quem faz o quê, um pensamento por frase, nada legível de duas maneiras. Use para revisar o que você ou um agente acabou de escrever, ou nomeie de antemão quando pedir um doc.
+[`/technical-writing`](../../.agents/skills/technical-writing/SKILL.md) aplica um padrão em camadas. O objetivo é prosa que um engenheiro cansado entende na primeira leitura. Ele escolhe primeiro o modo do documento (tutorial, how-to, referência ou explicação), depois trabalha frase por frase. Quem faz o quê, um pensamento por frase, nada legível de duas maneiras. Use para revisar o que você ou um agente acabou de escrever, ou nomeie de antemão quando pedir um doc.
 
 ## Teste uma mudança de skill às cegas
 
@@ -87,13 +87,13 @@ Quando uma skill segue errando e você sabe o que ela deveria fazer, mude e test
 
 Pedir o eval de antemão mantém a edição honesta. Uma correção escrita a partir de uma sessão ruim tende a sobreajustar a essa sessão, e ao longo de muitas edições a skill deriva. O eval pega a deriva antes da entrega.
 
-O [playbook Eval](../../skills/poteto-mode/playbooks/eval.md) é construído em torno de um modo de falha, o efeito observador. Um agente que sabe que está sendo avaliado se comporta diferente. Então agentes candidatos recebem uma tarefa de aparência orgânica em diretórios higienizados, nunca as palavras "eval" ou "candidate", e nunca a existência um do outro. Um juiz pontua todas as saídas sob rótulos neutros, e o seguimento de cadeia é avaliado pelos arquivos que cada candidato de fato leu, não pelo que ele afirma.
+O [playbook Eval](../../.agents/skills/poteto-mode/playbooks/eval.md) é construído em torno de um modo de falha, o efeito observador. Um agente que sabe que está sendo avaliado se comporta diferente. Então agentes candidatos recebem uma tarefa de aparência orgânica em diretórios higienizados, nunca as palavras "eval" ou "candidate", e nunca a existência um do outro. Um juiz pontua todas as saídas sob rótulos neutros, e o seguimento de cadeia é avaliado pelos arquivos que cada candidato de fato leu, não pelo que ele afirma.
 
 Leia toda saída você mesmo antes de aceitar o veredito. Se discordar do juiz, desconfie da rubrica antes de desconfiar do seu julgamento.
 
 ## Construa uma UI de bot com `/make-bot-ui`
 
-Uma skill situacional é para usuários do Grok Bot. O [`/make-bot-ui`](../../skills/make-bot-ui/SKILL.md) constrói uma página pequena cujos botões acordam um bot por uma rotina de webhook. Por exemplo, você pode deslizar por uma fila de revisão e fazer cada deslize pedir ao bot para agir naquele item. Um servidor na sua máquina guarda a chave de envio do webhook, então a chave nunca chega ao browser nem ao chat. A skill também cobre expor a página no Tailscale.
+Uma skill situacional é para usuários do Grok Bot. O [`/make-bot-ui`](../../.agents/skills/make-bot-ui/SKILL.md) constrói uma página pequena cujos botões acordam um bot por uma rotina de webhook. Por exemplo, você pode deslizar por uma fila de revisão e fazer cada deslize pedir ao bot para agir naquele item. Um servidor na sua máquina guarda a chave de envio do webhook, então a chave nunca chega ao browser nem ao chat. A skill também cobre expor a página no Tailscale.
 
 **Armadilha.** Não edite uma skill no meio da tarefa porque ela está se comportando mal. Corrija num PR próprio e mantenha a tarefa andando. Uma edição de skill que sai emaranhada em trabalho de funcionalidade fica invisível na revisão e impossível de avaliar.
 

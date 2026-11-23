@@ -279,9 +279,9 @@ quando um padrão muda, uma regra escrita antes da mudança ainda fixa o padrão
 
 ## automações
 
-o pstack também entrega um [pacote de automações benny](./automations/benny/) dormente. o benny tria relatos de problema no slack, depois reproduz e corrige bugs confirmados com evidência real de ui. os arquivos dele não são registrados como slash skills.
+o pstack de origem entregava um pacote de automações benny dormente, que triava relatos de problema no slack e reproduzia e corrigia bugs confirmados com evidência real de ui. os arquivos dele não eram registrados como slash skills.
 
-para configurar, aponte o cursor para o [`FOR_AGENTS.md`](./automations/benny/FOR_AGENTS.md). o setup copia o pacote para o repositório alvo em `.cursor/automations/benny/`, habilita o pstack lá para skills compartilhadas, e mantém a configuração do usuário fora do pacote copiado. o benny roda nas automações do cursor, então é exclusivo do cursor.
+esse pacote dependia das Automations do Cursor e não está incluído neste pacote adaptado. para triagem e reprodução agendadas, use o substituto documentado no [mapa de Claude Code](./docs/harness/claude-code.md): GitHub Actions rodando `claude -p`, ou um script `cron`.
 
 ## licença
 

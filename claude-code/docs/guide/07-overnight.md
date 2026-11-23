@@ -115,7 +115,7 @@ Todo laço acima ainda espera você iniciar. Uma automação agendada ou movida 
 - Todo estágio consegue parar a linha. A triagem pode decidir que o relato é comportamento esperado, o repro pode não conseguir reproduzir, e o corrigidor pode julgar a mudança arriscada demais. Cada um desses desfechos é útil, porque impede que trabalho ruim chegue ao estágio seguinte, onde desfazer custa mais.
 - Todo estágio entrega evidência. O repro anexa capturas e vídeo do estado quebrado, e a correção anexa prova de antes e depois. Um humano consegue então checar se o agente corrigiu a coisa certa antes de ler uma linha de código.
 
-O pstack entrega isso como um [pacote de automação](../../automations/benny/README.md) dormente para relatos de issue no Slack. Uma automação faz a triagem de cada relato. A outra reproduz bugs confirmados e pode preparar um rascunho pequeno de correção. Aponte um agente para o [`FOR_AGENTS.md`](../../automations/benny/FOR_AGENTS.md) dele e nomeie o repositório alvo para configurar.
+Na origem, o pstack entregava isso como um pacote de automação dormente para relatos de issue no Slack: uma automação fazia a triagem de cada relato e outra reproduzia bugs confirmados e preparava um rascunho pequeno de correção. Esse pacote usava Automations do Cursor e não vem neste pacote adaptado. Para montar o equivalente, siga o substituto no [mapa de Claude Code](../harness/claude-code.md): GitHub Actions rodando `claude -p`, ou um script `cron`.
 
 **Armadilha.** Uma duração não é condição de término. "work on this for 4 hours" não dá nada ao agente para checar, e você acorda com quatro horas de movimento em vez de um resultado. Dê ao `/loop` um predicado que passa ou falha.
 
